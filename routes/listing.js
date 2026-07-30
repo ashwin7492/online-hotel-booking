@@ -41,6 +41,8 @@ router
   .patch(
     isLogin,
     isOwner,
+    upload.single("listing[image]"),
+    uploadImage,
     validateListing,
     wrapAsync(listingController.updateListing),
   )

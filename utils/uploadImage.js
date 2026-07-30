@@ -5,7 +5,10 @@ const uploadImage = async (req, res, next) => {
   try {
     // file check
     if (!req.file) {
-      throw new ExpressError(400, "Image is required");
+      if (req.method === "POST") {
+        throw new ExpressError(400, "Image is required");
+      }
+      return next(); // If it's a PATCH request and no file is provided, just continue without error
     }
 
     // upload to cloudinary (buffer se)
