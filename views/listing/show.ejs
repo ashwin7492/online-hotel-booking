@@ -104,5 +104,16 @@
             </div>
 
         </div>
+        <div class="map-container">
+            <h3>Location:</h3>
+
+            <div id="map" data-latitude="<%= listing.latitude %>" data-longitude="<%= listing.longitude %>"
+                data-map-token="<%= process.env.MAP_TOKEN %>" data-title="<%= listing.title %>">
+            </div>
+
+
+            <script src="/js/map.js"></script>
+        </div>
+        </div>
 
     </body>

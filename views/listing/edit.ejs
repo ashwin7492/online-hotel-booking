@@ -37,7 +37,11 @@
           >
           <div class="invalid-feedback">Enter valid data.</div>
         </div>
-        <div>
+        Current Image:
+        <div class="mb-3">
+          <img src="<%=listing.image.url%>" class="edit-img" />
+        </div>
+        <div class="mb-3">
           <label for="image" class="form-label">New Image </label>
           <input type="file" name="listing[image]" class="form-control" />
         </div>

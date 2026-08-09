@@ -10,6 +10,7 @@ const { isLogin, isOwner, validateListing } = require("../utils/middleware.js");
 const uploadImage = require("../utils/uploadImage.js");
 
 const listingController = require("../controller/listing.js");
+const geocodeLocation = require("../utils/geocode.js");
 
 // Index route, Create route
 router
@@ -20,6 +21,7 @@ router
     upload.single("listing[image]"),
     uploadImage,
     validateListing,
+    geocodeLocation,
     wrapAsync(listingController.createListing),
   );
 
@@ -44,6 +46,7 @@ router
     upload.single("listing[image]"),
     uploadImage,
     validateListing,
+    geocodeLocation,
     wrapAsync(listingController.updateListing),
   )
   .delete(isLogin, isOwner, wrapAsync(listingController.destroyListing));

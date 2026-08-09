@@ -33,6 +33,12 @@ const listingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  latitude: {
+    type: Number,
+  },
+  longitude: {
+    type: Number,
+  },
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
