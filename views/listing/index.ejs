@@ -1,6 +1,58 @@
 <% layout("/layouts/boilerplate") %>
 
   <body>
+
+    <div class="filter-container ">
+
+      <div class="hamburger">
+        <svg width="60" height="30" viewBox="0 0 24 24">
+          <rect y="1" width="40" height="3" x="0" fill="#000000" />
+          <rect y="7" width="30" height="3" x="3" fill="#000000" />
+          <rect y="13" width="20" height="3" x="7.5" fill="#000000" />
+          <rect y="19" width="10" height="3" x="12.5" fill="#000000" />
+        </svg>
+      </div>
+
+      <div class="cross">
+        <svg width="25" height="25" viewBox="0 0 24 24">
+          <line x1="4" y1="4" x2="20" y2="20" stroke="#000000" stroke-width="3" stroke-linecap="round" />
+          <line x1="20" y1="4" x2="4" y2="20" stroke="#000000" stroke-width="3" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="filter">
+
+        <form action="/listings" method="GET" class="filters">
+
+          <div class=" ms-3 location-filter">
+            <input type="text" name="location" class="form-control" placeholder="Location">
+          </div>
+          <div class="ms-3 minPrice-filter">
+            <input type="number" name="minPrice" class="form-control" placeholder="Min Price">
+          </div>
+          <div class="ms-3 maxPrice-filter">
+            <input type="number" name="maxPrice" class="form-control" placeholder="Max Price">
+          </div>
+          <div class="ms-3 submit-btn">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="search-container">
+
+        <input type="text" placeholder="Search Files..." id="searchInput" />
+
+      </div>
+
+      <div class="form-check form-switch form-check-reverse tax-toggle">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
+        <label class="form-check-label" for="switchCheckChecked">Price After Tax</label>
+      </div>
+    </div>
+
+
+
     <div class="row">
       <% for (let list of listings) { %>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -12,9 +64,14 @@
                 <h5 class="card-title">
                   <%= list.title %>
                 </h5>
-                <p class="card-text">
-                  &#8377 <%= list.price.toLocaleString("en-IN") %>
-                </p>
+                <div class="card-text">
+                  <div class="cost" style="display: none;">
+                    &#8377 <%= list.price.toLocaleString("en-IN") %>
+                  </div>
+                  <div class="tax">
+                    &#8377 <%= (list.price * 1.18).toLocaleString("en-IN") %> (inclusive of all taxes)
+                  </div>
+                </div>
                 <p class="card-text">
                   <%= list.location %>
                 </p>
@@ -22,11 +79,61 @@
             </div>
           </a>
         </div>
-      <% } %>
+        <% } %>
     </div>
 
   </body>
 
+  <script>
+    function main() {
+      const taxToggler = document.querySelector('#switchCheckChecked');
+      const hamburger = document.querySelector('.hamburger');
+      const cross = document.querySelector('.cross');
+      const nav = document.querySelector('.filters');
+
+      function hideHeading() {
+        nav.style.display = "none";
+        cross.style.display = "none";
+        hamburger.style.display = "block";
+      }
+
+      function showHeading() {
+        nav.style.display = "inline-block";
+        hamburger.style.display = "none";
+        cross.style.display = "block";
+      }
+
+      taxToggler.addEventListener('click', () => {
+        const costElements = document.querySelectorAll('.cost');
+        const taxElements = document.querySelectorAll('.tax');
+
+        if (taxToggler.checked) {
+          costElements.forEach(cost => cost.style.display = 'none');
+          taxElements.forEach(tax => tax.style.display = 'block');
+        } else {
+          costElements.forEach(cost => cost.style.display = 'block');
+          taxElements.forEach(tax => tax.style.display = 'none');
+        }
+      });
+
+      hamburger.addEventListener('click', () => {
+        if (window.innerWidth <= 950) {
+          console.log("hamburger is clicked");
+          showHeading();
+        }
+      });
+
+      cross.addEventListener('click', () => {
+        if (window.innerWidth <= 950) {
+          console.log("cross is clicked");
+          hideHeading();
+        }
+      })
+    }
+
+    main();
+
+  </script>
 
   <!-- <% layout("/layouts/boilerplate") %>
 

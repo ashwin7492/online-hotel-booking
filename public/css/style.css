@@ -92,7 +92,92 @@ body {
 }
 
 /* map */
-#map{
-  height:400px;
-  width:80vh;
+#map {
+  height: 400px;
+  width: 80vh;
+}
+
+/* extra-addings-index */
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  width: fit-content;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 50px;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+
+}
+
+.cross {
+  display: none;
+  cursor: pointer;
+}
+
+.tax-toggle {
+
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 0.5rem 3rem 0.5rem 1rem !important;
+
+}
+
+.location-filter {
+  width: 150px;
+}
+
+.minPrice-filter,
+.maxPrice-filter {
+  width: 120px;
+}
+
+/*search */
+
+#searchInput {
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 1rem;
+}
+
+@media (max-width: 950px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .filters {
+    display: none;
+    width: 90%;
+  }
+
+  .flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .filter-container{
+        padding: 1rem 1rem 1rem 0;
+  }
+  .filter{
+    width: stretch;
+    margin-bottom: 10px;
+  }
+
 }
