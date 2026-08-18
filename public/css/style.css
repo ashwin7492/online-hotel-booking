@@ -2,6 +2,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+    background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
 }
 
 .content {
@@ -17,6 +19,7 @@ body {
 }
 
 /* footers */
+
 .sticky-footer {
   height: 8rem;
   flex-shrink: 0;
@@ -24,7 +27,7 @@ body {
 
 .f-info-terms a {
   text-decoration: none;
-  color: black;
+  color: var(--bs-body-color);
   text-align: center;
   gap: 2rem;
 }
@@ -41,7 +44,6 @@ body {
 .f-info-socials,
 .f-info-brand,
 .f-info-terms {
-  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,10 +96,10 @@ body {
 /* map */
 #map {
   height: 400px;
-  width: 80vh;
+  width: stretch;
 }
 
-/* extra-addings-index */
+/* filters */
 
 .filter-container {
   display: flex;
@@ -114,7 +116,7 @@ body {
   align-items: center;
   margin: 1rem 0;
   width: fit-content;
-  border: 1px solid #ccc;
+  border: 1px solid var(--bs-border-color);
   padding: 1rem;
   border-radius: 50px;
 }
@@ -132,7 +134,7 @@ body {
 
 .tax-toggle {
 
-  border: 1px solid #ccc;
+  border: 1px solid var(--bs-border-color);
   border-radius: 25px;
   padding: 0.5rem 3rem 0.5rem 1rem !important;
 
@@ -151,7 +153,7 @@ body {
 
 #searchInput {
   width: 150px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--bs-border-color);
   border-radius: 25px;
   padding: 1rem;
 }
@@ -172,12 +174,15 @@ body {
     gap: 20px;
   }
 
-  .filter-container{
-        padding: 1rem 1rem 1rem 0;
+  .filter-container {
+    padding: 1rem 1rem 1rem 0;
   }
-  .filter{
+
+  .filter {
     width: stretch;
     margin-bottom: 10px;
   }
 
 }
+
+

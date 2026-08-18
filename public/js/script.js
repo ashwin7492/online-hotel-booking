@@ -21,3 +21,18 @@
     );
   });
 })();
+
+// Dark mode toggle
+
+const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
+
+function setTheme() {
+  document.documentElement.setAttribute(
+    "data-bs-theme",
+    darkMode.matches ? "dark" : "light",
+  );
+}
+
+setTheme();
+
+darkMode.addEventListener("change", setTheme);

@@ -55,7 +55,7 @@
 
     <div class="row">
       <% for (let list of listings) { %>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 listing-item">
           <a class="card-click" href="/listings/<%= list._id %>">
             <div class="card index-card">
               <img src="<%= list.image.url %>" class="card-img-top" alt="listing image">
@@ -82,86 +82,5 @@
         <% } %>
     </div>
 
+    <script src="/js/index.js"></script>
   </body>
-
-  <script>
-    function main() {
-      const taxToggler = document.querySelector('#switchCheckChecked');
-      const hamburger = document.querySelector('.hamburger');
-      const cross = document.querySelector('.cross');
-      const nav = document.querySelector('.filters');
-
-      function hideHeading() {
-        nav.style.display = "none";
-        cross.style.display = "none";
-        hamburger.style.display = "block";
-      }
-
-      function showHeading() {
-        nav.style.display = "inline-block";
-        hamburger.style.display = "none";
-        cross.style.display = "block";
-      }
-
-      taxToggler.addEventListener('click', () => {
-        const costElements = document.querySelectorAll('.cost');
-        const taxElements = document.querySelectorAll('.tax');
-
-        if (taxToggler.checked) {
-          costElements.forEach(cost => cost.style.display = 'none');
-          taxElements.forEach(tax => tax.style.display = 'block');
-        } else {
-          costElements.forEach(cost => cost.style.display = 'block');
-          taxElements.forEach(tax => tax.style.display = 'none');
-        }
-      });
-
-      hamburger.addEventListener('click', () => {
-        if (window.innerWidth <= 950) {
-          console.log("hamburger is clicked");
-          showHeading();
-        }
-      });
-
-      cross.addEventListener('click', () => {
-        if (window.innerWidth <= 950) {
-          console.log("cross is clicked");
-          hideHeading();
-        }
-      })
-    }
-
-    main();
-
-  </script>
-
-  <!-- <% layout("/layouts/boilerplate") %>
-
-<div class="container mt-4">
-  <div class="row g-4">
-    <% for (let list of listings) { %>
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img 
-            src="<%= list.image %>" 
-            class="card-img-top"
-            alt="listing image"
-            style="height: 180px; object-fit: cover;"
-          >
-
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title"><%= list.title %></h5>
-
-            <p class="card-text mb-1">
-              ₹ <%= list.price %>
-            </p>
-
-            <p class="card-text text-muted mt-auto">
-              <%= list.location %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% } %>
-  </div>
-</div> -->
