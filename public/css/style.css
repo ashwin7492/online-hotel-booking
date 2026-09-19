@@ -65,7 +65,12 @@ body {
 
 .card-img-top {
   height: 400px;
+  object-fit: cover;
   border-radius: 1.5rem;
+}
+
+.card-img-top-show {
+  object-fit: contain !important;;
 }
 
 .card-click {

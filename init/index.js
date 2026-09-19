@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
 
-let url =
-  "mongodb+srv://ashwin7492_db_user:luzPu0vcorZSu7ew@cluster0.raljodu.mongodb.net/?appName=Cluster0";
+const dbUrl = process.env.ATLAS_DBURL;
 
 main()
   .then(() => {

@@ -1,43 +1,3 @@
-// const axios = require("axios");
-
-// const geocodeLocation = async (req, res, next) => {
-//   try {
-//     const { location, country } = req.body.listing;
-
-//     const address = `${location}, ${country}`;
-
-//     const response = await axios.get(
-//       "https://api.geoapify.com/v1/geocode/search",
-//       {
-//         params: {
-//           text: address,
-//           limit: 1,
-//           apiKey: process.env.MAP_TOKEN
-//         }
-//       }
-//     );
-
-//     if (!response.data.results.length) {
-//       req.flash("error", "Location could not be found.");
-//       return res.redirect("/listings/new");
-//     }
-
-//     const result = response.data.results[0];
-
-//     // Add coordinates to the request body
-//     req.body.listing.latitude = result.lat;
-//     req.body.listing.longitude = result.lon;
-
-//     next();
-
-//   } catch (err) {
-//     console.log("Geocoding error:", err.message);
-
-//     req.flash("error", "Unable to find location.");
-//     return res.redirect("/listings/new");
-//   }
-// };
-
 const axios = require("axios");
 const geocodeLocation = async (req, res, next) => {
   try {
@@ -45,8 +5,6 @@ const geocodeLocation = async (req, res, next) => {
 
     console.log("Location:", location);
     console.log("Country:", country);
-    console.log("API KEY EXISTS:", !!process.env.MAP_TOKEN);
-    console.log("API KEY:", process.env.MAP_TOKEN);
 
     const response = await axios.get(
       "https://api.geoapify.com/v1/geocode/search",

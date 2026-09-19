@@ -30,7 +30,6 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-// let url = "mongodb://127.0.0.1:27017/AirBNB-clone";
 const dbUrl = process.env.ATLAS_DBURL;
 
 main()
@@ -47,14 +46,14 @@ async function main() {
 const store = MongoStore.create({
   mongoUrl: dbUrl,
   crypto: {
-    secret: "supersecret",
+    secret: process.env.SECRET_KEY,
   },
   touchAfter: 24 * 3600,
 });
 
 const sessionOptions = {
   store,
-  secret: "thisisasecret",
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true,
   cookie: {
