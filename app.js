@@ -63,8 +63,8 @@ const sessionOptions = {
   },
 };
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Air-BNB-clone");
+app.get("/listings", (req, res) => {
+  req.render("listing/index.ejs");
 });
 
 app.use(session(sessionOptions));
