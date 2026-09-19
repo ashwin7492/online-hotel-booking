@@ -64,7 +64,7 @@ const sessionOptions = {
 };
 
 app.get("/listings", (req, res) => {
-  req.render("listing/index.ejs");
+  res.redirect("/listings");
 });
 
 app.use(session(sessionOptions));
